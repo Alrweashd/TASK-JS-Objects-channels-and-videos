@@ -9,8 +9,20 @@ const channels = require("./channels.json");
  ****************************************************************/
 function totalVideosDuration(channel) {
   // Your code here
+  // let array = [];
+  // channel.forEach((element) => {
+  //   let durations;
+  //   videos.forEach((ch) => {
+  //     array.push(ch.duration);
+  //   });
+  // });
+  let dur = 0;
+  channel.videos.forEach((element) => {
+    dur = dur + element.duration;
+  });
+  return dur;
 }
-
+//totalVideosDuration(channel);
 /**************************************************************
  * channelWithMostContent(channels):
  * - receives an array of channel objects
