@@ -32,6 +32,15 @@ function totalVideosDuration(channel) {
  * BONUS: use iteration method `.sort()`
  ****************************************************************/
 function channelWithMostContent(channels) {
+  let totalDurArray = [];
+
+  channels.forEach((channel) => {
+    totalDurArray.push(totalVideosDuration(channel));
+  });
+  //console.log(Math.max.apply(Math, totalDurArray));
+  let index = totalDurArray.indexOf(Math.max.apply(Math, totalDurArray));
+  //console.log(totalDurArray);
+  return channels[index];
   // Your code here
 }
 
@@ -44,6 +53,27 @@ function channelWithMostContent(channels) {
  ****************************************************************/
 function longestChannelName(channels) {
   // Your code here
+  // let value = channels.filter(channel=>{
+  //   for(let i=0; i<channels.length;i++){
+  //     if(channel.name.length>channels[i].name.length) return channel
+  //   }
+  // })
+
+  // let value2 = channels.filter(channel=>{
+  //  channels.forEach(i=>i.name<channel.name)
+  // })
+  // return value
+  let totalDurArray = [];
+
+  channels.forEach((channel) => {
+    totalDurArray.push(channel.name);
+  });
+  //console.log(Math.max.apply(Math, totalDurArray));
+  let index = totalDurArray.indexOf(Math.max.apply(Math, totalDurArray));
+  //console.log(totalDurArray);
+  return channels[index];
+
+
 }
 
 // Check your answers by running this file and comparing what it logs
