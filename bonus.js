@@ -76,6 +76,15 @@ function longestChannelName(channels) {
 
 }
 
+var mutiLineStr = ['SQL', 'C#', 'C++', 'Python', 'JavaScript']
+
+function Find_longStr(myarry) {
+    var max = myarry[0].length;
+    myarry.map(item => max = Math.max(max, item.length));
+    Str = myarry.filter(item => item.length == max);
+    return Str;
+}
+console.log("Longest String in array: ", Find_longStr(mutiLineStr)) 
 // Check your answers by running this file and comparing what it logs
 
 console.log(totalVideosDuration(channels[0]));
