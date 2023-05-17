@@ -69,9 +69,14 @@ function longestChannelName(channels) {
     totalDurArray.push(channel.name);
   });
   //console.log(Math.max.apply(Math, totalDurArray));
-  let index = totalDurArray.indexOf(Math.max.apply(Math, totalDurArray));
-  //console.log(totalDurArray);
-  return channels[index];
+  let string = [totalDurArray[0]];
+  totalDurArray.forEach((i, index) => {
+    if (string[0].length < i.length) {
+      string = [i, index];
+    }
+  });
+
+  return channels[string[1]];
 }
 
 var mutiLineStr = ["SQL", "C#", "C++", "Python", "JavaScript"];
@@ -82,15 +87,38 @@ function Find_longStr(myarry) {
   Str = myarry.filter((item) => item.length == max);
   return Str;
 }
-console.log("Longest String in array: ", Find_longStr(mutiLineStr));
+
+function longestChannelName2(channels) {
+  let arra = channels.map((channel) => channel.name.length);
+  let index = arra.indexOf(Math.max.apply(Math, arra));
+  return channels[index];
+  let obj = {};
+  let max = 0;
+  channels.forEach((channel) => {
+    channels.forEach((channel2) => {
+      max = channel.name.length;
+      if (max > channel2.name.length) {
+        console.log("hereee111  ", channel.name.length, channel2.name.length);
+        obj = channel;
+      } else {
+        console.log("hereee222  ", channel.name.length, channel2.name.length);
+
+        max = channel2.name.length;
+        obj = channel2;
+      }
+    });
+  });
+  console.log(obj);
+}
+//console.log("Longest String in array: ", Find_longStr(mutiLineStr));
 // Check your answers by running this file and comparing what it logs
 
-console.log(totalVideosDuration(channels[0]));
+// console.log(totalVideosDuration(channels[0]));
 // Should log:
 
 // 636
 
-console.log(channelWithMostContent(channels));
+// console.log(channelWithMostContent(channels));
 // Should log:
 
 // {
@@ -105,7 +133,7 @@ console.log(channelWithMostContent(channels));
 //   ],
 // }
 
-console.log(longestChannelName(channels));
+console.log(longestChannelName2(channels));
 // Should log:
 
 // {
