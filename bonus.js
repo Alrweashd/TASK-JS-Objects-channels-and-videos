@@ -84,9 +84,15 @@ function longestChannelName1(channels) {
 
 function longestChannelName(channels) {
   let obj = {};
+  let max;
   channels.forEach((channel) => {
     channels.forEach((channel2) => {
-      if (channel.name > channel2.name) {
+      max = channel.name.length;
+      if (max > channel2.name.length) {
+        console.log("hereee111  ", channel.name.length > channel2.name.length);
+        obj = channel;
+      } else {
+        max = channel2.name.length;
         obj = channel;
       }
     });
