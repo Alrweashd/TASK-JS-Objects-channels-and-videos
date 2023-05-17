@@ -51,7 +51,7 @@ function channelWithMostContent(channels) {
  *
  * BONUS: use iteration method `.sort()`
  ****************************************************************/
-function longestChannelName(channels) {
+function longestChannelName1(channels) {
   // Your code here
   // let value = channels.filter(channel=>{
   //   for(let i=0; i<channels.length;i++){
@@ -65,24 +65,43 @@ function longestChannelName(channels) {
   // return value
   let totalDurArray = [];
 
+  let arr = channels.filter((channel) => {
+    channels.map((channel2) => {
+      channel.name.length > channel2.name.length;
+      console.log(channel.name.length > channel2.name.length);
+    });
+    console.log(channel.name);
+  });
+
   channels.forEach((channel) => {
     totalDurArray.push(channel.name);
   });
   //console.log(Math.max.apply(Math, totalDurArray));
   let index = totalDurArray.indexOf(Math.max.apply(Math, totalDurArray));
   //console.log(totalDurArray);
-  return channels[index];
+  return arr;
 }
 
-var mutiLineStr = ["SQL", "C#", "C++", "Python", "JavaScript"];
-
-function Find_longStr(myarry) {
-  var max = myarry[0].length;
-  myarry.map((item) => (max = Math.max(max, item.length)));
-  Str = myarry.filter((item) => item.length == max);
-  return Str;
+function longestChannelName(channels) {
+  let obj = {};
+  channels.forEach((channel) => {
+    channels.forEach((channel2) => {
+      if (channel.name > channel2.name) {
+        obj = channel;
+      }
+    });
+  });
+  console.log("hereee  ", obj);
 }
-console.log("Longest String in array: ", Find_longStr(mutiLineStr));
+// var mutiLineStr = ["SQL", "C#", "C++", "Python", "JavaScript"];
+
+// function Find_longStr(myarry) {
+//   var max = myarry[0].length;
+//   myarry.map((item) => (max = Math.max(max, item.length)));
+//   Str = myarry.filter((item) => item.length == max);
+//   return Str;
+// }
+// console.log("Longest String in array: ", Find_longStr(mutiLineStr));
 // Check your answers by running this file and comparing what it logs
 
 console.log(totalVideosDuration(channels[0]));
