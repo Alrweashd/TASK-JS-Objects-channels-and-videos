@@ -77,9 +77,20 @@ function longestChannelName1(channels) {
     totalDurArray.push(channel.name);
   });
   //console.log(Math.max.apply(Math, totalDurArray));
+  // <<<<<<< HEAD
   let index = totalDurArray.indexOf(Math.max.apply(Math, totalDurArray));
   //console.log(totalDurArray);
   return arr;
+  // =======
+  // let string = [totalDurArray[0]];
+  // totalDurArray.forEach((i, index) => {
+  //   if (string[0].length < i.length) {
+  //     string = [i, index];
+  //   }
+  // });
+
+  // return channels[string[1]];
+  // >>>>>>> 2cdcd6888b56c87f2acca3f1544fcf0a74bad685
 }
 
 function longestChannelName(channels) {
@@ -97,63 +108,91 @@ function longestChannelName(channels) {
       }
     });
   });
-  console.log("hereee  ", obj);
-}
-// var mutiLineStr = ["SQL", "C#", "C++", "Python", "JavaScript"];
+  console.log("hereee  ", obj); }
+  // }
+  // <<<<<<< HEAD
+  // // var mutiLineStr = ["SQL", "C#", "C++", "Python", "JavaScript"];
 
-// function Find_longStr(myarry) {
-//   var max = myarry[0].length;
-//   myarry.map((item) => (max = Math.max(max, item.length)));
-//   Str = myarry.filter((item) => item.length == max);
-//   return Str;
-// }
-// console.log("Longest String in array: ", Find_longStr(mutiLineStr));
-// Check your answers by running this file and comparing what it logs
+  // // function Find_longStr(myarry) {
+  // //   var max = myarry[0].length;
+  // //   myarry.map((item) => (max = Math.max(max, item.length)));
+  // //   Str = myarry.filter((item) => item.length == max);
+  // //   return Str;
+  // // }
+  // // console.log("Longest String in array: ", Find_longStr(mutiLineStr));
+  // =======
 
-console.log(totalVideosDuration(channels[0]));
-// Should log:
+  function longestChannelName2(channels) {
+    let arra = channels.map((channel) => channel.name.length);
+    let index = arra.indexOf(Math.max.apply(Math, arra));
+    return channels[index];
+    let obj = {};
+    let max = 0;
+    channels.forEach((channel) => {
+      channels.forEach((channel2) => {
+        max = channel.name.length;
+        if (max > channel2.name.length) {
+          console.log("hereee111  ", channel.name.length, channel2.name.length);
+          obj = channel;
+        } else {
+          console.log("hereee222  ", channel.name.length, channel2.name.length);
 
-// 636
+          max = channel2.name.length;
+          obj = channel2;
+        }
+      });
+    });
+    console.log(obj);
+  }
+  //console.log("Longest String in array: ", Find_longStr(mutiLineStr));
+  // >>>>>>> 2cdcd6888b56c87f2acca3f1544fcf0a74bad685
+  // Check your answers by running this file and comparing what it logs
 
-console.log(channelWithMostContent(channels));
-// Should log:
+  // console.log(totalVideosDuration(channels[0]));
+  // Should log:
 
-// {
-//   name: "PowerfulJRE",
-//   description: "The Joe Rogan Experience podcast",
-//   videos: [
-//     { title: "Joe Rogan Experience #1480 - Kevin Hart", duration: 121 },
-//     { title: "Joe Rogan Experience #1470 - Elon Musk", duration: 120 },
-//     { title: "Joe Rogan Experience #1477 - Tony Hawk", duration: 102 },
-//     { title: "Joe Rogan Experience #1413 - Bill Maher", duration: 118 },
-//     { title: "Joe Rogan Experience #1208 - Jordan Peterson", duration: 175 },
-//   ],
-// }
+  // 636
 
-console.log(longestChannelName(channels));
-// Should log:
+  // console.log(channelWithMostContent(channels));
+  // Should log:
 
-// {
-//   name: "Alternate History Hub",
-//   description: "An entire channel dedicated to the 'What If?'.  Using knowledge of geography, population and other historical facts I predict what could have happened had things gone differently in history.",
-//   videos: [
-//     { title: "What if Rome Never Existed? Part III", duration: 19 },
-//     {
-//       title: "What if Trump Was Never Elected President?",
-//       duration: 4,
-//     },
-//     {
-//       title: "How A Corporation Conquered A Sub-Continent",
-//       duration: 18,
-//     },
-//     {
-//       title: "What if Antarctica Was A Green Continent?",
-//       duration: 18,
-//     },
-//     {
-//       title: "Why Tyrion's Solution For Westeros Doomed Everyone",
-//       duration: 8,
-//     },
-//     { title: "What if Napoleon Never Fell?", duration: 10 },
-//   ],
-// }
+  // {
+  //   name: "PowerfulJRE",
+  //   description: "The Joe Rogan Experience podcast",
+  //   videos: [
+  //     { title: "Joe Rogan Experience #1480 - Kevin Hart", duration: 121 },
+  //     { title: "Joe Rogan Experience #1470 - Elon Musk", duration: 120 },
+  //     { title: "Joe Rogan Experience #1477 - Tony Hawk", duration: 102 },
+  //     { title: "Joe Rogan Experience #1413 - Bill Maher", duration: 118 },
+  //     { title: "Joe Rogan Experience #1208 - Jordan Peterson", duration: 175 },
+  //   ],
+  // }
+
+  console.log(longestChannelName2(channels));
+  // Should log:
+
+  // {
+  //   name: "Alternate History Hub",
+  //   description: "An entire channel dedicated to the 'What If?'.  Using knowledge of geography, population and other historical facts I predict what could have happened had things gone differently in history.",
+  //   videos: [
+  //     { title: "What if Rome Never Existed? Part III", duration: 19 },
+  //     {
+  //       title: "What if Trump Was Never Elected President?",
+  //       duration: 4,
+  //     },
+  //     {
+  //       title: "How A Corporation Conquered A Sub-Continent",
+  //       duration: 18,
+  //     },
+  //     {
+  //       title: "What if Antarctica Was A Green Continent?",
+  //       duration: 18,
+  //     },
+  //     {
+  //       title: "Why Tyrion's Solution For Westeros Doomed Everyone",
+  //       duration: 8,
+  //     },
+  //     { title: "What if Napoleon Never Fell?", duration: 10 },
+  //   ],
+  //
+  
