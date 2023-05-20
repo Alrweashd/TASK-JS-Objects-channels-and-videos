@@ -8,21 +8,20 @@ const channels = require("./channels.json");
  * BONUS: use iteration method `.reduce()`
  ****************************************************************/
 function totalVideosDuration(channel) {
-  // Your code here
-  // let array = [];
-  // channel.forEach((element) => {
-  //   let durations;
-  //   videos.forEach((ch) => {
-  //     array.push(ch.duration);
-  //   });
+  // let dur = 0;
+  // channel.videos.forEach((element) => {
+  //   dur = dur + element.duration;
   // });
-  let dur = 0;
-  channel.videos.forEach((element) => {
-    dur = dur + element.duration;
-  });
-  return dur;
+  // return dur;
+
+  //total initially 0
+  return [...channel.videos].reduce(
+    (total, video) => total + video.duration,
+    0
+  );
 }
-//totalVideosDuration(channel);
+//console.log(channels[0].videos[0].duration);
+//console.log(totalVideosDuration(channels[0]));
 /**************************************************************
  * channelWithMostContent(channels):
  * - receives an array of channel objects
@@ -32,17 +31,19 @@ function totalVideosDuration(channel) {
  * BONUS: use iteration method `.sort()`
  ****************************************************************/
 function channelWithMostContent(channels) {
-  let totalDurArray = [];
+  // let totalDurArray = [];
+  // channels.forEach((channel) => {
+  //   totalDurArray.push(totalVideosDuration(channel));
+  // });
+  // let index = totalDurArray.indexOf(Math.max.apply(Math, totalDurArray));
+  //return channels[index];
 
-  channels.forEach((channel) => {
-    totalDurArray.push(totalVideosDuration(channel));
-  });
-  //console.log(Math.max.apply(Math, totalDurArray));
-  let index = totalDurArray.indexOf(Math.max.apply(Math, totalDurArray));
-  //console.log(totalDurArray);
-  return channels[index];
-  // Your code here
+  return [...channels].sort(
+    (ch1, ch2) => totalVideosDuration(ch2) - totalVideosDuration(ch1)
+  )[0];
 }
+
+console.log(channelWithMostContent(channels));
 
 /**************************************************************
  * longestChannelName(channels):
@@ -51,148 +52,11 @@ function channelWithMostContent(channels) {
  *
  * BONUS: use iteration method `.sort()`
  ****************************************************************/
-function longestChannelName1(channels) {
-  // Your code here
-  // let value = channels.filter(channel=>{
-  //   for(let i=0; i<channels.length;i++){
-  //     if(channel.name.length>channels[i].name.length) return channel
-  //   }
-  // })
-
-  // let value2 = channels.filter(channel=>{
-  //  channels.forEach(i=>i.name<channel.name)
-  // })
-  // return value
-  let totalDurArray = [];
-
-  let arr = channels.filter((channel) => {
-    channels.map((channel2) => {
-      channel.name.length > channel2.name.length;
-      console.log(channel.name.length > channel2.name.length);
-    });
-    console.log(channel.name);
-  });
-
-  channels.forEach((channel) => {
-    totalDurArray.push(channel.name);
-  });
-  //console.log(Math.max.apply(Math, totalDurArray));
-  // <<<<<<< HEAD
-  let index = totalDurArray.indexOf(Math.max.apply(Math, totalDurArray));
-  //console.log(totalDurArray);
-  return arr;
-  // =======
-  // let string = [totalDurArray[0]];
-  // totalDurArray.forEach((i, index) => {
-  //   if (string[0].length < i.length) {
-  //     string = [i, index];
-  //   }
-  // });
-
-  // return channels[string[1]];
-  // >>>>>>> 2cdcd6888b56c87f2acca3f1544fcf0a74bad685
+function longestChannelName(channels) {
+  // let arra = channels.map((channel) => channel.name.length);
+  // let index = arra.indexOf(Math.max.apply(Math, arra));
+  // return channels[index];
+  return [...channels].sort((ch1, ch2) => ch2.name.length - ch1.name.length)[0];
 }
 
-function longestChannelName(channels) {
-  let obj = {};
-  let max;
-  channels.forEach((channel) => {
-    channels.forEach((channel2) => {
-      max = channel.name.length;
-      if (max > channel2.name.length) {
-        console.log("hereee111  ", channel.name.length > channel2.name.length);
-        obj = channel;
-      } else {
-        max = channel2.name.length;
-        obj = channel;
-      }
-    });
-  });
-  console.log("hereee  ", obj); }
-  // }
-  // <<<<<<< HEAD
-  // // var mutiLineStr = ["SQL", "C#", "C++", "Python", "JavaScript"];
-
-  // // function Find_longStr(myarry) {
-  // //   var max = myarry[0].length;
-  // //   myarry.map((item) => (max = Math.max(max, item.length)));
-  // //   Str = myarry.filter((item) => item.length == max);
-  // //   return Str;
-  // // }
-  // // console.log("Longest String in array: ", Find_longStr(mutiLineStr));
-  // =======
-
-  function longestChannelName2(channels) {
-    let arra = channels.map((channel) => channel.name.length);
-    let index = arra.indexOf(Math.max.apply(Math, arra));
-    return channels[index];
-    let obj = {};
-    let max = 0;
-    channels.forEach((channel) => {
-      channels.forEach((channel2) => {
-        max = channel.name.length;
-        if (max > channel2.name.length) {
-          console.log("hereee111  ", channel.name.length, channel2.name.length);
-          obj = channel;
-        } else {
-          console.log("hereee222  ", channel.name.length, channel2.name.length);
-
-          max = channel2.name.length;
-          obj = channel2;
-        }
-      });
-    });
-    console.log(obj);
-  }
-  //console.log("Longest String in array: ", Find_longStr(mutiLineStr));
-  // >>>>>>> 2cdcd6888b56c87f2acca3f1544fcf0a74bad685
-  // Check your answers by running this file and comparing what it logs
-
-  // console.log(totalVideosDuration(channels[0]));
-  // Should log:
-
-  // 636
-
-  // console.log(channelWithMostContent(channels));
-  // Should log:
-
-  // {
-  //   name: "PowerfulJRE",
-  //   description: "The Joe Rogan Experience podcast",
-  //   videos: [
-  //     { title: "Joe Rogan Experience #1480 - Kevin Hart", duration: 121 },
-  //     { title: "Joe Rogan Experience #1470 - Elon Musk", duration: 120 },
-  //     { title: "Joe Rogan Experience #1477 - Tony Hawk", duration: 102 },
-  //     { title: "Joe Rogan Experience #1413 - Bill Maher", duration: 118 },
-  //     { title: "Joe Rogan Experience #1208 - Jordan Peterson", duration: 175 },
-  //   ],
-  // }
-
-  console.log(longestChannelName2(channels));
-  // Should log:
-
-  // {
-  //   name: "Alternate History Hub",
-  //   description: "An entire channel dedicated to the 'What If?'.  Using knowledge of geography, population and other historical facts I predict what could have happened had things gone differently in history.",
-  //   videos: [
-  //     { title: "What if Rome Never Existed? Part III", duration: 19 },
-  //     {
-  //       title: "What if Trump Was Never Elected President?",
-  //       duration: 4,
-  //     },
-  //     {
-  //       title: "How A Corporation Conquered A Sub-Continent",
-  //       duration: 18,
-  //     },
-  //     {
-  //       title: "What if Antarctica Was A Green Continent?",
-  //       duration: 18,
-  //     },
-  //     {
-  //       title: "Why Tyrion's Solution For Westeros Doomed Everyone",
-  //       duration: 8,
-  //     },
-  //     { title: "What if Napoleon Never Fell?", duration: 10 },
-  //   ],
-  //
-  
+console.log(longestChannelName(channels));
